@@ -46,7 +46,7 @@ export default function Twitter() {
       "channel": channelId
     }
   }
-  
+
   const handleProfileSave = async (e) => {
     e.preventDefault();
     try {
@@ -137,6 +137,34 @@ export default function Twitter() {
                 type="tel"
                 onChange={(event) => setPhoneNumber(event.currentTarget.value)}
                 value={phoneNumber}
+              />
+            </InputGroup>
+          </FormControl>
+          <FormControl>
+            <FormLabel>Slack Access Token</FormLabel>
+            <InputGroup>
+              <InputLeftElement
+                pointerEvents="none"
+                children={<UnlockIcon color="gray.300" />}
+              />
+              <Input
+                type="text"
+                onChange={(event) => setAccessToken(event.currentTarget.value)}
+                value={accessToken}
+              />
+            </InputGroup>
+          </FormControl>
+          <FormControl>
+            <FormLabel>Channel ID</FormLabel>
+            <InputGroup>
+              <InputLeftElement
+                pointerEvents="none"
+                children={<BellIcon color="gray.300" />}
+              />
+              <Input
+                type="text"
+                onChange={(event) => setChannelId(event.currentTarget.value)}
+                value={channelId}
               />
             </InputGroup>
           </FormControl>
