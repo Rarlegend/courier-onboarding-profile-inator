@@ -15,7 +15,7 @@ import {
   Link,
   useToast
 } from "@chakra-ui/react";
-import { EmailIcon, PhoneIcon } from "@chakra-ui/icons";
+import { EmailIcon, PhoneIcon, UnlockIcon, BellIcon } from "@chakra-ui/icons";
 
 import Editor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs/components/prism-core";
@@ -63,8 +63,14 @@ export default function Twitter() {
         isClosable: true,
         position: "top-right"
       });
+      console.log(authToken);
+      console.log(recipientId);
+      console.log(profile);
     } catch (err) {
       console.log(err);
+      console.log(authToken);
+      console.log(recipientId);
+      console.log(profile);
       toast({
         title: "Unable to save Profile.",
         description: "We were unable to create the profile for you.",
