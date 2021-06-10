@@ -28,11 +28,25 @@ export default function Twitter() {
   const [authToken, setAuthToken] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [accessToken, setAccessToken] = useState("");
+  const [channelId, setChannelId] = useState("");
+  const [slack, setSlack] = useState({
+    "access_token": "",
+    "channel": ""
+  });
   const profile = {
     ...(email.length > 0 && { email }),
-    ...(phoneNumber.length > 0 && { phone_number: phoneNumber })
+    ...(phoneNumber.length > 0 && { phone_number: phoneNumber }),
+    ...(accessToken.length > 0 && channelId.length > 0 && { slack: slack })
   };
 
+  if (accessToken || channelId){
+    profile.slack = {
+      "access_token": accessToken,
+      "channel": channelId
+    }
+  }
+  
   const handleProfileSave = async (e) => {
     e.preventDefault();
     try {
@@ -53,7 +67,7 @@ export default function Twitter() {
       console.log(err);
       toast({
         title: "Unable to save Profile.",
-        description: "We were uanble to create the profile for you.",
+        description: "We were unable to create the profile for you.",
         status: "error",
         duration: 9000,
         isClosable: true,
